@@ -4,6 +4,7 @@ import './App.css'
 import NotFound from './NotFound';
 import Header from './pages/Header/Header';
 import Home from './pages/Home/home';
+import Login from './pages/Login';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,7 +16,8 @@ function App() {
 
       <Routes>
         <Route index element={<Navigate replace to={'/Login'} />} />
-        <Route path='/home' element={Home} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/home' element={<Home />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
