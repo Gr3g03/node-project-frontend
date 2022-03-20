@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
     return (
         <header>
@@ -16,7 +18,7 @@ export default function Header() {
                 </ul>
 
                 <ul className="header__right">
-                    <li className='headerOption__icon' > <img src='./src/pages/assets/home.svg' alt="home" /> </li>
+                    <Link to={'/home'}><li className='headerOption__icon' > <img src='./src/pages/assets/home.svg' alt="home" /> </li></Link>
                     <li className='headerOption__icon' > <img src='./src/pages/assets/businessCenter.svg' alt="businessCenter" /> </li>
                     <li className='headerOption__icon' > <img src='./src/pages/assets/notifications.svg' alt="notifications" /> </li>
                     <li className='headerOption__icon' > <img src='./src/pages/assets/supervisorAccount.svg' alt="supervisorAccount" /></li>

@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 export default function Login() {
+    const navigate = useNavigate()
+
     return (
         <main className="login__main">
             <div className="login">
@@ -23,7 +27,10 @@ export default function Login() {
                         placeholder="Password"
                         type="password"
                     />
-                    <button type="submit">
+                    <button type="submit" onSubmit={(e) => {
+                        e.preventDefault()
+                        navigate('home')
+                    }}>
                         Sign In
                     </button>
                 </form>
