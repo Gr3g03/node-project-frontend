@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
+import { useState } from "react/cjs/react.production.min";
 
 export default function Header({ setUser }) {
+
+    // const [search, setSearch] = useState('')
 
     function signOut() {
         localStorage.removeItem('token')
         setUser(null)
     }
+
 
     return (
         <header>
@@ -18,7 +22,7 @@ export default function Header({ setUser }) {
                         />
                     </li>
                     <li className="header__search">
-                        <img src='' alt='' />
+                        <img src='./src/pages/assets/search.svg' alt='' />
                         <input placeholder="Search" type="text" />
                     </li>
                 </ul>

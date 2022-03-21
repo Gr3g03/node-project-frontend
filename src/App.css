@@ -447,6 +447,21 @@
 
 }
 
+.logo {
+  display: grid;
+  /* border: 1px solid black; */
+  width: 80px;
+  
+}
+
+.img{
+  width: 100%;
+}
+
+.logo-img{
+    width: 80px;
+}
+
 .job-possition {
   display: grid;
   /* border: 1px solid black; */
@@ -464,5 +479,6 @@
 
 .company-data li {
     color: slateblue;
+    
     
 }

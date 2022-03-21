@@ -4,13 +4,14 @@ import Widgets from "./widgets"
 
 export default function Home({ user, setUser }) {
 
-    const [post, setPost] = useState([])
+    // const [post, setPost] = useState([])
 
 
     function addNewPost(e) {
         e.preventDefault()
         const text = e.target.newPost.value
         const dateCreated = Date()
+        const likes = user.likes
 
         fetch('http://localhost:4000/post', {
             method: 'POST',
@@ -18,23 +19,28 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ text: text, dateCreated: dateCreated })
+            body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: likes })
         })
             .then(resp => resp.json())
             .then(data => {
                 if (data.error) {
                     alert(data.error)
                 } else {
-                    setPost(data)
+                    setUser(data.user)
                 }
             })
-
-
     }
 
+    // function like(post) {
+    //     fetch(`http://localhost:3001/posts/${post.id}`, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ likes: post.likes++ })
+    //     })
+
     return (
-
-
         <main className='main__section'>
             <Sidebar user={user} />
             <div className="feed">
@@ -63,17 +69,17 @@ export default function Home({ user, setUser }) {
                     {user.post.map(item =>
                         <div className="post" key={item.id}>
                             <div className="post__header">
-                                <img src={user.image} alt='avatar' />
+                                <img src={item.image} alt='avatar' />
                                 <div className="post__info">
                                     <h2>{user.firstName}</h2>
                                     <p>{item.text}</p>
                                 </div>
                             </div>
-                            <div className="post__body">
-                                {/* <p>{item.text}</p> */}
-                            </div>
+                            {/* <div className="post__body">
+                                <p>{item.text}</p>
+                            </div> */}
                             <ul className="post__buttons">
-                                <li><img src={'./src/pages/assets/thumbUp.svg'} /></li>
+                                <li><button><img src={'./src/pages/assets/thumbUp.svg'} />{item.likes}   </button></li>
                                 <li><img src={'./src/pages/assets/comment.svg'} /></li>
                                 <li><img src={'./src/pages/assets/share.svg'} /></li>
                                 <li><img src={'./src/pages/assets/send.svg'} /></li>
