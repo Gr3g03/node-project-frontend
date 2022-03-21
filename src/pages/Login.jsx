@@ -7,7 +7,6 @@ export default function Login({ user, setUser }) {
 
     // const [user, setUser] = useState(null)
 
-
     useEffect(() => {
         if (localStorage.token) {
             fetch('http://localhost:4000/validate', {
@@ -151,6 +150,6 @@ export default function Login({ user, setUser }) {
             </main>
         )
     return (
-        <Home user={user} />
+        <Home user={user} setUser={setUser} />
     )
 }

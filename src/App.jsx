@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route index element={<Navigate replace to={'/Login'} />} />
         <Route path='/login' element={<Login setUser={setUser} user={user} />} />
-        <Route path='/home' element={<Home user={user} />} />
+        <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 
