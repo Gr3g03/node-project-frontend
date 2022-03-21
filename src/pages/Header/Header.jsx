@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ setUser }) {
+
+    function signOut() {
+        localStorage.removeItem('token')
+        setUser(null)
+    }
+
     return (
         <header>
             <nav className="header" >
@@ -23,6 +29,7 @@ export default function Header() {
                     <li className='headerOption__icon' > <img src='./src/pages/assets/notifications.svg' alt="notifications" /> </li>
                     <li className='headerOption__icon' > <img src='./src/pages/assets/supervisorAccount.svg' alt="supervisorAccount" /></li>
                     <li className='headerOption__icon'> <img src='./src/pages/assets/chat.svg' alt="chat" /> </li>
+                    <li><button onClick={signOut}>SIGN OUT</button></li>
                 </ul>
             </nav>
         </header>

@@ -9,15 +9,17 @@ import Login from './pages/Login';
 function App() {
   const [count, setCount] = useState(0)
   const [input, setInput] = useState('');
+  const [user, setUser] = useState(null);
+
   return (
 
     <div className="App">
-      <Header />
+      <Header setUser={setUser} />
 
       <Routes>
         <Route index element={<Navigate replace to={'/Login'} />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/login' element={<Login setUser={setUser} user={user} />} />
+        <Route path='/home' element={<Home user={user} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

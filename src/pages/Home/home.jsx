@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home({ user }) {
 
     return (
         <main className='main__section'>
@@ -9,11 +9,11 @@ export default function Home() {
                         alt=""
                     />
                     <div className="sidebar__avatar">
-                        <img src='' alt='avatar' />
-                        <h3>'username'</h3>
+                        <img src={user.image} alt='avatar' />
+                        <h3>{user.firstName}</h3>
                     </div>
-                    <h2>displyanme'</h2>
-                    <h4>'email'</h4>
+                    <h2>{user.firstName}</h2>
+                    <h4>{user.email}'</h4>
                 </div>
 
                 <div className="sidebar__stats">
