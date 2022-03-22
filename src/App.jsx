@@ -4,6 +4,7 @@ import './App.css'
 import NotFound from './NotFound';
 import Companies from './pages/Companies/Companies';
 import Connection from './pages/Connections/Connection';
+import Connections from './pages/Connections/Connections';
 import Header from './pages/Header/Header';
 import Home from './pages/Home/home';
 import Job from './pages/Jobs/job';
@@ -172,7 +173,8 @@ function App() {
         <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path='/jobs' element={<Jobs user={user} />} />
         <Route path='/jobs/:id' element={<Job />} />
-        <Route path='/connection' element={<Connection />} />
+        <Route path='connections' element={<Connections user={user} />} />
+        <Route path='/connections/:id' element={<Connection />} />
         <Route path='/companies' element={<Companies />} />
         <Route path='/profile' element={<Profile user={user} />} />
         <Route path="*" element={<NotFound />} />

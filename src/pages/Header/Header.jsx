@@ -32,9 +32,9 @@ export default function Header({ setUser }) {
                 <ul className="header__right">
                     <Link to={'/home'}><li className='headerOption__icon' > <img src='./src/pages/assets/home.svg' alt="home" /> </li></Link>
                     <Link to={'/jobs'}> <li className='headerOption__icon' > <img src='./src/pages/assets/businessCenter.svg' alt="businessCenter" /> </li></Link>
-                    <Link to={'/connection'}> <li className='headerOption__icon' > <img src='./src/pages/assets/notifications.svg' alt="notifications" /> </li></Link>
-                    <Link to={'/companies'}> <li className='headerOption__icon' > <img src='./src/pages/assets/supervisorAccount.svg' alt="supervisorAccount" /></li></Link>
-                    <Link to={'/profile'}> <li className='headerOption__icon'> <img src='./src/pages/assets/chat.svg' alt="chat" /> </li></Link>
+                    {/* <Link to={'/companies'}> <li className='headerOption__icon' > <img src='./src/pages/assets/notifications.svg' alt="notifications" /> </li></Link> */}
+                    <Link to={'/connections'}> <li className='headerOption__icon' > <img src='./src/pages/assets/supervisorAccount.svg' alt="supervisorAccount" /></li></Link>
+                    <Link to={'/profile'}> <li className='headerOption__icon'> <img src='./src/pages/assets/avatar.svg' alt="chat" /> </li></Link>
                     <li><button onClick={signOut}>SIGN OUT</button></li>
                 </ul>
             </nav>
