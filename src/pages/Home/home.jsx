@@ -12,14 +12,15 @@ export default function Home({ user, setUser }) {
         const text = e.target.newPost.value
         const dateCreated = Date()
         const likes = user.likes
-
+        // const comments = e.target.comment.value
+        // comments: comments
         fetch('http://localhost:4000/post', {
             method: 'POST',
             headers: {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: likes })
+            body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: likes, })
         })
             .then(resp => resp.json())
             .then(data => {
@@ -39,6 +40,8 @@ export default function Home({ user, setUser }) {
     //         },
     //         body: JSON.stringify({ likes: post.likes++ })
     //     })
+
+    console.log(user)
 
     return (
         <main className='main__section'>
@@ -84,6 +87,26 @@ export default function Home({ user, setUser }) {
                                 <li><img src={'./src/pages/assets/share.svg'} /></li>
                                 <li><img src={'./src/pages/assets/send.svg'} /></li>
                             </ul>
+                            <ul className="comments">
+                                <li >comment </li>
+                                <form className="comment-form" onSubmit={e => {
+                                    e.preventDefault()
+                                    // @ts-ignore
+                                    // const content = e.target.comment.value
+                                    // @ts-ignore
+                                    // createComents(product.id, content)
+                                    // @ts-ignore
+                                    e.target.reset()
+                                }}>
+                                    <input type="text"
+                                        name="comment"
+                                        className="comment-input"
+                                        placeholder="Add a comment" />
+                                    <button className="comment-button" type="submit">ADD</button>
+                                </form>
+
+                            </ul>
+
                         </div>
                     )}
                 </div>

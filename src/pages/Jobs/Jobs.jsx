@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Sidebar from "../Home/sidebar";
 import Widgets from "../Home/widgets";
 
 export default function Jobs({ user }) {
 
-
     const [companies, setCompanies] = useState([])
+
 
     useEffect(() => {
         fetch('http://localhost:4000/companies')
             .then(resp => resp.json())
             .then(newData => setCompanies(newData))
     }, [])
-
-    // console.log(companies)
 
     return (
 
@@ -35,9 +34,11 @@ export default function Jobs({ user }) {
                 </section>
                 {companies.map(job =>
                     <section className="company-info" key={job.id}>
-                        <div className="logo">
-                            <img src={job.photo} alt="image" className="logo-img" />
-                        </div>
+                        <Link to={`/jobs/${job.id}`}>
+                            <div className="logo">
+                                <img src={job.photo} alt="image" className="logo-img" />
+                            </div>
+                        </Link>
                         <div className="job-possition">
                             <h3>{job.jobs[0].title}</h3>
                         </div>
@@ -49,6 +50,7 @@ export default function Jobs({ user }) {
                             </ul>
                         </div>
                     </section>
+
                 )}
             </div>
 

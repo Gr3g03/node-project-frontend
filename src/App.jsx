@@ -6,15 +6,13 @@ import Companies from './pages/Companies/Companies';
 import Connection from './pages/Connections/Connection';
 import Header from './pages/Header/Header';
 import Home from './pages/Home/home';
+import Job from './pages/Jobs/job';
 import Jobs from './pages/Jobs/Jobs';
-// import Login from './pages/Login';
 import Profile from './pages/Profile/Profile';
 
 function App() {
   const [input, setInput] = useState('');
   const [user, setUser] = useState(null);
-
-  // const [user, setUser] = useState(null)
 
   const navigate = useNavigate()
 
@@ -169,10 +167,11 @@ function App() {
       <Header setUser={setUser} />
 
       <Routes>
-        <Route index element={<Navigate replace to={'/Login'} />} />
+        <Route index element={<Navigate replace to={'/home'} />} />
         {/* <Route path='/login' element={<Login setUser={setUser} user={user} />} /> */}
         <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path='/jobs' element={<Jobs user={user} />} />
+        <Route path='/jobs/:id' element={<Job />} />
         <Route path='/connection' element={<Connection />} />
         <Route path='/companies' element={<Companies />} />
         <Route path='/profile' element={<Profile />} />
