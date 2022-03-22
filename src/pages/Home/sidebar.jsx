@@ -1,37 +1,49 @@
+import './profile.css'
+
 export default function Sidebar({ user }) {
     return (
-        <section className="sidebar">
+        <div className="sidebar">
             <div className="sidebar__top">
-                <img
-                    src="https://images.unsplash.com/photo-1523650055327-53aeba964f5f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
-                    alt=""
-                />
-                <div className="sidebar__avatar">
-                    <img src={user.image} alt='avatar' />
-                    <h3>{user.firstName}</h3>
-                </div>
+                <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMjA3fDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
+                <i className="material-icons sidebar__topAvatar"><img className='user_avatar' src="https://www.vhv.rs/dpng/d/505-5058091_agent-icon-png-male-profile-logo-png-transparent.png" alt="" /> </i>
                 <h2>{user.firstName}</h2>
-                <h4>{user.email}'</h4>
+                <h4>{user.email}</h4>
             </div>
 
             <div className="sidebar__stats">
                 <div className="sidebar__stat">
-                    <p>Who viewed you</p>
-                    <p className="sidebar__statNumber">2,543</p>
+                    <p>Who Viewed You</p>
+                    <p className="sidebar__statNumber">2,453</p>
                 </div>
                 <div className="sidebar__stat">
-                    <p>View on post</p>
-                    <p className="sidebar__statNumber">2,448</p>
+                    <p>Views on post</p>
+                    <p className="sidebar__statNumber">2,650</p>
                 </div>
             </div>
-            <ul className="sidebar__bottom">
+
+            <div className="sidebar__bottom">
                 <p>Recent</p>
-                <li>reactjs</li>
-                <li>programming</li>
-                <li>softwareengineering</li>
-                <li>design</li>
-                <li>developer</li>
-            </ul>
-        </section>
+                <div className="sidebar__recentItem">
+                    <span className="sidebar__hash">#</span>
+                    <p>reactjs</p>
+                </div>
+                <div className="sidebar__recentItem">
+                    <span className="sidebar__hash">#</span>
+                    <p>programming</p>
+                </div>
+                <div className="sidebar__recentItem">
+                    <span className="sidebar__hash">#</span>
+                    <p>softwareengineering</p>
+                </div>
+                <div className="sidebar__recentItem">
+                    <span className="sidebar__hash">#</span>
+                    <p>design</p>
+                </div>
+                <div className="sidebar__recentItem">
+                    <span className="sidebar__hash">#</span>
+                    <p>developer</p>
+                </div>
+            </div>
+        </div>
     )
 }

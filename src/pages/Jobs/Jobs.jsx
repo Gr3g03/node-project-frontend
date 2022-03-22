@@ -33,23 +33,23 @@ export default function Jobs({ user }) {
 
                 </section>
                 {companies.map(job =>
-                    <section className="company-info" key={job.id}>
-                        <Link to={`/jobs/${job.id}`}>
+                    <Link to={`/jobs/${job.id}`}>
+                        <section className="company-info" key={job.id}>
                             <div className="logo">
                                 <img src={job.photo} alt="image" className="logo-img" />
                             </div>
-                        </Link>
-                        <div className="job-possition">
-                            <h3>{job.jobs[0].title}</h3>
-                        </div>
-                        <div className="company-data">
-                            <ul>
-                                <li>{job.name}</li>
-                                <li>{job.location}</li>
-                                <li>{job.jobs[0].salary}$</li>
-                            </ul>
-                        </div>
-                    </section>
+                            <div className="job-possition">
+                                <h3>{job.jobs[0].title}</h3>
+                            </div>
+                            <div className="company-data">
+                                <ul>
+                                    <li>{job.name}</li>
+                                    <li>{job.location}</li>
+                                    <li>{job.jobs[0].salary}$</li>
+                                </ul>
+                            </div>
+                        </section>
+                    </Link>
 
                 )}
             </div>

@@ -1,15 +1,37 @@
+import './profile.css'
 export default function Widgets() {
     return (
         <section className="widgets">
             <div className="widgets__header">
                 <h2>LinkedIn News</h2>
-                <img src={'./src/pages/assets/info.svg'} alt="" />
+                <i className="material-icons"> info </i>
             </div>
-            <article>React is awesome, Top news - 9899 readers</article>
-            <article>Coronavirus: UK updates, Top news - 886 readers</article>
-            <article>Tesla hits new highs, Cars  auto - 300 readers</article>
-            <article>Bitcoin breaks $22k, Crypto - 8000 readers</article>
-            <article>Is Redux too good?, Code - 123 readers</article>
+            <div className="widgets__article">
+                <div className="widgets__articleLeft">
+                </div>
+                <div className="widgets__articleRight">
+                    <h4>Coding </h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
+
+            <div className="widgets__article">
+                <div className="widgets__articleLeft">
+                </div>
+                <div className="widgets__articleRight">
+                    <h4> LinkedIn </h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
+
+            <div className="widgets__article">
+                <div className="widgets__articleLeft">
+                </div>
+                <div className="widgets__articleRight">
+                    <h4>Article</h4>
+                    <p>Top news - 4500 readers</p>
+                </div>
+            </div>
         </section>
     )
 }

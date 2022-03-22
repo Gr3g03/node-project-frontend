@@ -174,7 +174,7 @@ function App() {
         <Route path='/jobs/:id' element={<Job />} />
         <Route path='/connection' element={<Connection />} />
         <Route path='/companies' element={<Companies />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/profile' element={<Profile user={user} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

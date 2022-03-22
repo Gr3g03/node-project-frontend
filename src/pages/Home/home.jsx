@@ -72,7 +72,7 @@ export default function Home({ user, setUser }) {
                     {user.post.map(item =>
                         <div className="post" key={item.id}>
                             <div className="post__header">
-                                <img src={item.image} alt='avatar' />
+                                <img className="user_avatar" src={user.photo} alt='avatar' />
                                 <div className="post__info">
                                     <h2>{user.firstName}</h2>
                                     <p>{item.text}</p>

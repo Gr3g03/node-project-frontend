@@ -16,6 +16,7 @@ export default function Job() {
             .then(newData => setCompanies(newData))
     }, [])
 
+
     return (
         <main>
             <section className="product-detail main-wrapper">
