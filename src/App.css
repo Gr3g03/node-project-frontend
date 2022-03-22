@@ -401,13 +401,11 @@
   grid-template-columns: 0.5fr  1fr 0.5fr;
   width: 90vw;
   height: 100vh;
- /* border: 1px solid black; */
  gap: 0.5rem;
-/* margin-top: 0.5rem; */
 }
 
 .sugested__jobs__searches{
- border: 1px solid black;
+ /* border: 1px solid black; */
   display: grid;
   height:fit-content;
   overflow: hidden;
@@ -419,37 +417,34 @@
 }
 
 .suggested {
+  border: 1px solid black;
+  border-radius: 5px;
  display: grid;
- /* grid-template-rows: 50px 20px; */
  align-items: center;
  justify-content: center;
- /* border: 1px solid black; */
  grid-auto-flow: row;
 }
 
 .suggested__{
   display: grid;
   grid-auto-flow: row;
-  /* border: 1px solid black; */
   list-style: none;
 }
 
 .suggested__ li{
  display: grid;
- /* border: 1px solid black; */
-
 }
 .company-info {
   display: grid;
   grid-template-rows: 1fr 1fr;
   height:fit-content;
   border: 1px solid black;
-
+  border-radius: 5px;
+  padding: 0.2rem
 }
 
 .logo {
   display: grid;
-  /* border: 1px solid black; */
   width: 80px;
   
 }
@@ -464,8 +459,6 @@
 
 .job-possition {
   display: grid;
-  /* border: 1px solid black; */
-  
 }
 
 .company-data ul {
@@ -473,12 +466,9 @@
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
   gap: 1rem;
-  /* border: 1px solid black; */
   justify-items: center;
 }
 
 .company-data li {
     color: slateblue;
-    
-    
 }

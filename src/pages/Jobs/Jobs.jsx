@@ -34,7 +34,7 @@ export default function Jobs({ user }) {
 
                 </section>
                 {companies.map(job =>
-                    <section className="company-info">
+                    <section className="company-info" key={job.id}>
                         <div className="logo">
                             <img src={job.photo} alt="image" className="logo-img" />
                         </div>

@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react/cjs/react.production.min";
 
 export default function Header({ setUser }) {
+
+    const navigate = useNavigate()
 
     // const [search, setSearch] = useState('')
 
