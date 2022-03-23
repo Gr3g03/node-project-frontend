@@ -36,10 +36,9 @@ export default function Home({ user, setUser }) {
     function addComment(e) {
         e.preventDefault()
         const commentText = e.target.comment.value
-        const likes = user.post[2].likes
+        const likes = user.post.likes
         const dateCreated = Date()
-        // const userId = user.id
-        // const postId = user.post.id
+
 
         fetch('http://localhost:4000/comments', {
             method: 'POST',
@@ -66,7 +65,7 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ likes: item.likes++ })
+            body: JSON.stringify({ likes: user.post.id.likes + 1 })
         })
             .then(resp => resp.json())
             // update state
@@ -74,22 +73,7 @@ export default function Home({ user, setUser }) {
 
     }
 
-
-    // function updateLikes(postId, likes) {
-    //     // update order on server
-    //     fetch(`http://localhost:4000/likes/${postId}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             Authorization: localStorage.token,
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ likes })
-    //     })
-    //         .then(resp => resp.json())
-    //         // update state
-    //         .then(updatedUser => setUser(updatedUser))
-    // }
-    // console.log(user.post)
+    console.log(user)
 
     return (
         <main className='main__section'>
@@ -130,9 +114,7 @@ export default function Home({ user, setUser }) {
                                 <p>{item.text}</p>
                             </div> */}
                             <ul className="post__buttons">
-                                <li><button className="like_button" onChange={(e) => {
-                                    like(item)
-                                }}>
+                                <li><button className="like_button" onClick={() => { like(item) }}>
                                     <img src={'./src/pages/assets/thumbUp.svg'} /> {item.likes}   </button></li>
                                 <li><img src={'./src/pages/assets/comment.svg'} /></li>
                                 <li><img src={'./src/pages/assets/share.svg'} /></li>

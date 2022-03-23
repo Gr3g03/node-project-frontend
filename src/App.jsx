@@ -12,7 +12,6 @@ import Jobs from './pages/Jobs/Jobs';
 import Profile from './pages/Profile/Profile';
 
 function App() {
-  const [input, setInput] = useState('');
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate()
