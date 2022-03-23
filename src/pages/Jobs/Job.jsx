@@ -7,9 +7,6 @@ export default function Job() {
     const params = useParams()
     const [companies, setCompanies] = useState([])
 
-    // const [product, setProduct] = useState([])
-    // const [comments, setComments] = useState([])
-
     useEffect(() => {
         fetch(`http://localhost:4000/companies/${params.id}`)
             .then(resp => resp.json())
@@ -17,9 +14,12 @@ export default function Job() {
     }, [])
 
 
+    console.log(companies)
+
     return (
         <main>
-            <section className="product-detail main-wrapper">
+            <h2>sometext</h2>
+            <section className="product-detail">
                 <img
                     // @ts-ignore
                     src={companies.photo}
@@ -28,10 +28,9 @@ export default function Job() {
                 />
                 {companies.map(company =>
                     <div className="product-detail__side"  >
-
                         <h3>{company.name}</h3>
-                        <h2 >{company.description} </h2>
-                        <p> item</p>
+                        <h2 >{company.location} </h2>
+                        <p> {company.description}</p>
                         <p> item </p>
                         <h2>reviews</h2>
                     </div>

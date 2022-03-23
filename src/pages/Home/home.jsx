@@ -4,8 +4,6 @@ import Widgets from "./widgets"
 
 export default function Home({ user, setUser }) {
 
-    // const [post, setPost] = useState([])
-
 
     function addNewPost(e) {
         e.preventDefault()
@@ -32,16 +30,66 @@ export default function Home({ user, setUser }) {
             })
     }
 
-    // function like(post) {
-    //     fetch(`http://localhost:3001/posts/${post.id}`, {
+
+    console.log()
+
+    function addComment(e) {
+        e.preventDefault()
+        const commentText = e.target.comment.value
+        const likes = user.post[2].likes
+        const dateCreated = Date()
+        // const userId = user.id
+        // const postId = user.post.id
+
+        fetch('http://localhost:4000/comments', {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ commentText: commentText, likes: likes, dateCreated: dateCreated })
+        })
+            .then(resp => resp.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error)
+                } else {
+                    setUser(data.user)
+                }
+            })
+    }
+
+    function like(item) {
+        fetch(`http://localhost:4000/likes/${item.id}`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ likes: item.likes++ })
+        })
+            .then(resp => resp.json())
+            // update state
+            .then(updatedUser => setUser(updatedUser))
+
+    }
+
+
+    // function updateLikes(postId, likes) {
+    //     // update order on server
+    //     fetch(`http://localhost:4000/likes/${postId}`, {
     //         method: 'PATCH',
     //         headers: {
+    //             Authorization: localStorage.token,
     //             'Content-Type': 'application/json'
     //         },
-    //         body: JSON.stringify({ likes: post.likes++ })
+    //         body: JSON.stringify({ likes })
     //     })
-
-    console.log(user)
+    //         .then(resp => resp.json())
+    //         // update state
+    //         .then(updatedUser => setUser(updatedUser))
+    // }
+    // console.log(user.post)
 
     return (
         <main className='main__section'>
@@ -82,22 +130,17 @@ export default function Home({ user, setUser }) {
                                 <p>{item.text}</p>
                             </div> */}
                             <ul className="post__buttons">
-                                <li><button><img src={'./src/pages/assets/thumbUp.svg'} />{item.likes}   </button></li>
+                                <li><button className="like_button" onChange={(e) => {
+                                    like(item)
+                                }}>
+                                    <img src={'./src/pages/assets/thumbUp.svg'} /> {item.likes}   </button></li>
                                 <li><img src={'./src/pages/assets/comment.svg'} /></li>
                                 <li><img src={'./src/pages/assets/share.svg'} /></li>
                                 <li><img src={'./src/pages/assets/send.svg'} /></li>
                             </ul>
                             <ul className="comments">
                                 <li >comment </li>
-                                <form className="comment-form" onSubmit={e => {
-                                    e.preventDefault()
-                                    // @ts-ignore
-                                    // const content = e.target.comment.value
-                                    // @ts-ignore
-                                    // createComents(product.id, content)
-                                    // @ts-ignore
-                                    e.target.reset()
-                                }}>
+                                <form className="comment-form" onSubmit={addComment}>
                                     <input type="text"
                                         name="comment"
                                         className="comment-input"

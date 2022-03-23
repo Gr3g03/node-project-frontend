@@ -13,6 +13,8 @@ export default function Jobs({ user }) {
             .then(resp => resp.json())
             .then(newData => setCompanies(newData))
     }, [])
+    console.log(companies[0])
+
 
     return (
 
@@ -33,8 +35,10 @@ export default function Jobs({ user }) {
 
                 </section>
                 {companies.map(job =>
-                    <Link to={`/jobs/${job.id}`}>
-                        <section className="company-info" key={job.id}>
+                    <Link to={`/jobs/${job.id}`}
+                        key={job.id}
+                        className='jobs_list_item'>
+                        <section className="company-info">
                             <div className="logo">
                                 <img src={job.photo} alt="image" className="logo-img" />
                             </div>
