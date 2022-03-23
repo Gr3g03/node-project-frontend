@@ -31,8 +31,6 @@ export default function Home({ user, setUser }) {
     }
 
 
-    console.log()
-
     function addComment(e) {
         e.preventDefault()
         const commentText = e.target.comment.value
