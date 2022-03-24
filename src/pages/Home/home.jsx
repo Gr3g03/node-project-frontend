@@ -45,17 +45,13 @@ export default function Home({ user, setUser }) {
             body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: 0 })
         })
             .then(resp => resp.json())
-
-            .then((commentData) => {
-                const upadtecomment = JSON.parse(JSON.stringify(user))
-
-                const postIndex = upadtecomment.post.findIndex(item =>
-                    item.id === commentData.id)
-                upadtecomment.post[postIndex] = commentData
-                setUser(upadtecomment)
+            .then((postData) => {
+                const upadteLikes = JSON.parse(JSON.stringify(user))
+                setUser(upadteLikes)
             })
     }
     console.log(user)
+
 
     function like(item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
@@ -70,10 +66,8 @@ export default function Home({ user, setUser }) {
             // update state
             .then((postData) => {
                 const upadteLikes = JSON.parse(JSON.stringify(user))
-
                 const postIndex = upadteLikes.post.findIndex(item =>
                     item.id === postData.id)
-                // postData === postIndex
                 upadteLikes.post[postIndex] = postData
                 setUser(upadteLikes)
             })
