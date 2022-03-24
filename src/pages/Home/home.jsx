@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Sidebar from "./sidebar"
 import Widgets from "./widgets"
 
 export default function Home({ user, setUser }) {
+
+
 
 
     function addNewPost(e) {
@@ -10,8 +12,7 @@ export default function Home({ user, setUser }) {
         const text = e.target.newPost.value
         const dateCreated = Date()
         const likes = user.likes
-        // const comments = e.target.comment.value
-        // comments: comments
+
         fetch('http://localhost:4000/post', {
             method: 'POST',
             headers: {
@@ -30,13 +31,20 @@ export default function Home({ user, setUser }) {
             })
     }
 
+    const [posts, setPosts] = useState([])
 
-    function addComment(e) {
+    useEffect(() => {
+        fetch('http://localhost:4000/posts')
+            .then(resp => resp.json())
+            .then(data => setPosts(data))
+    }, [])
+
+    function addComment(e,) {
         e.preventDefault()
         const commentText = e.target.comment.value
-        const likes = user.post.likes
         const dateCreated = Date()
-
+        const postId = user.post.id
+        const likes = user.id.likes
 
         fetch('http://localhost:4000/comments', {
             method: 'POST',
@@ -44,7 +52,7 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ commentText: commentText, likes: likes, dateCreated: dateCreated })
+            body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: likes })
         })
             .then(resp => resp.json())
             .then(data => {
