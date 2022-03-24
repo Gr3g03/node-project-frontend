@@ -20,7 +20,7 @@ export default function Connections({ allUsers, setAllUsers, searcheditems }) {
         <div className="container">
             <div className="main-body">
                 {searcheditems.map(getUser =>
-                    <Link to={`/connections/${allUsers.id}`}
+                    <Link to={`/connections/${getUser.id}`}
                         key={getUser.id}
                         className='users_list_item'
                     >
