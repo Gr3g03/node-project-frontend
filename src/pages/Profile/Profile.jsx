@@ -1,5 +1,12 @@
+import { useState } from "react"
+import Education from "./Education"
 
-export default function Profile({ user }) {
+export default function Profile({ user, setUser }) {
+    const [show, setShow] = useState(false)
+
+    function handleOnClick() {
+        setShow(true)
+    }
     return (
         <div className="sidebar">
             <div className="sidebar__top">
@@ -20,51 +27,25 @@ export default function Profile({ user }) {
                 </div>
             </div>
 
+
             <div className="sidebar__bottom">
-                <p>Resources</p>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>Creator mode</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>My Netowrk</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>Activity</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>design</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>My items</p>
-                </div>
-            </div>
-            <div className="sidebar__bottom">
-                <p>Experiences</p>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>reactjs</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>programming</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>softwareengineering</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>design</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>developer</p>
-                </div>
+                <p>Education</p>
+                <ul>
+                    <li>
+                        <button onClick={() =>
+                            handleOnClick()
+                        }>
+                            <h3 >+</h3></button>
+                        <Education show={show} setShow={setShow} user={user} setUser={setUser} />
+                    </li>
+                    {
+                        user.Education.map(school =>
+                            <li><div><h3>{school.school}</h3>
+                                <h4>{school.field}</h4>
+                                <span>{school.startYear}</span><span>-{school.endYear}</span></div></li>
+                        )
+                    }
+                </ul>
             </div>
         </div>
     )

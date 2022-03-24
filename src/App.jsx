@@ -115,7 +115,7 @@ function App() {
         <Route path='connections' element={<Connections setAllUsers={setAllUsers} searcheditems={searcheditems} />} />
         <Route path='/connections/:id' element={<Connection allUsers={allUsers} user={user} />} />
         <Route path='/companies' element={<Companies />} />
-        <Route path='/profile' element={<Profile user={user} />} />
+        <Route path='/profile' element={<Profile user={user} setUser={setUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
