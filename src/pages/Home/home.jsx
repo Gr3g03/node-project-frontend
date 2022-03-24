@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react"
 import Sidebar from "./sidebar"
 import Widgets from "./widgets"
 
 export default function Home({ user, setUser }) {
-
-
-
 
     function addNewPost(e) {
         e.preventDefault()
@@ -30,14 +26,6 @@ export default function Home({ user, setUser }) {
                 }
             })
     }
-
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:4000/posts')
-            .then(resp => resp.json())
-            .then(data => setPosts(data))
-    }, [])
 
     function addComment(e, id) {
         e.preventDefault()
@@ -64,8 +52,6 @@ export default function Home({ user, setUser }) {
             })
     }
 
-    // console.log(user.post[1].id)
-
     function like(item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
             method: 'PATCH',
@@ -81,7 +67,6 @@ export default function Home({ user, setUser }) {
 
     }
 
-    // console.log(user)
 
     return (
         <main className='main__section'>
@@ -118,9 +103,6 @@ export default function Home({ user, setUser }) {
                                     <p>{item.text}</p>
                                 </div>
                             </div>
-                            {/* <div className="post__body">
-                                <p>{item.text}</p>
-                            </div> */}
                             <ul className="post__buttons">
                                 <li><button className="like_button" onClick={() => { like(item) }}>
                                     <img src={'./src/pages/assets/thumbUp.svg'} /> {item.likes}   </button></li>
@@ -129,7 +111,6 @@ export default function Home({ user, setUser }) {
                                 <li><img src={'./src/pages/assets/send.svg'} /></li>
                             </ul>
                             <ul className="comments">
-                                <li >comment </li>
                                 <form className="comment-form" onSubmit={(e) => addComment(e, item.id)}>
                                     <input type="text"
                                         name="comment"
@@ -137,7 +118,7 @@ export default function Home({ user, setUser }) {
                                         placeholder="Add a comment" />
                                     <button className="comment-button" type="submit">ADD</button>
                                 </form>
-                                <li>{item.comments.map(comment => <p>{comment.commentText}</p>)}</li>
+                                <li>{item.comments.map(comment => <p key={comment.id}>{comment.commentText}</p>)}</li>
                             </ul>
 
                         </div>
