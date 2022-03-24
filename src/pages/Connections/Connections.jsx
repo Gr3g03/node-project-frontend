@@ -26,8 +26,7 @@ export default function Connections({ setAllUsers, searcheditems }) {
                                     <p className="User_location">Bay Area, San Francisco, CA</p>
                                 </div>
                                 <div className="card-footer">
-                                    <button className="connect_btn" type="button"><i className="material-icons">add</i>Follow</button>
-                                    <button className="chat_btn" type="button">Chat</button>
+                                    <button className="connect_btn" type="button">Connect</button>
                                 </div>
                             </div>
                         </div>

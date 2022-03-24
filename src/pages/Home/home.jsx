@@ -72,7 +72,7 @@ export default function Home({ user, setUser }) {
                 setUser(upadteLikes)
             })
     }
-
+    console.log(user)
 
     return (
         <main className='main__section'>
@@ -100,7 +100,7 @@ export default function Home({ user, setUser }) {
                         <li><img src={'./src/pages/assets/event.svg'} /></li>
                         <li><img src={'./src/pages/assets/calendarViewWeek.svg'} /></li>
                     </ul>
-                    {user.post?.map(item =>
+                    {user.post.map(item =>
                         <div className="post" key={item.id}>
                             <div className="post__header">
                                 <img className="user_avatar" src={user.photo} alt='avatar' />
@@ -128,6 +128,40 @@ export default function Home({ user, setUser }) {
                             </ul>
 
                         </div>
+                    )}
+
+                    {user.following.map(follower => (
+                        follower.post.map(item =>
+                            <div className="post" key={item.id}>
+                                <div className="post__header">
+                                    <img className="user_avatar" src={follower.photo} alt='avatar' />
+                                    <div className="post__info">
+                                        <h2>{follower.firstName}</h2>
+                                        <p>{item.text}</p>
+                                    </div>
+                                </div>
+                                <ul className="post__buttons">
+                                    <li><button className="like_button" onClick={() => { like(item) }}>
+                                        <img src={'./src/pages/assets/thumbUp.svg'} /> {item.likes}   </button></li>
+                                    <li><img src={'./src/pages/assets/comment.svg'} /></li>
+                                    <li><img src={'./src/pages/assets/share.svg'} /></li>
+                                    <li><img src={'./src/pages/assets/send.svg'} /></li>
+                                </ul>
+                                <ul className="comments">
+                                    <form className="comment-form" onSubmit={(e) => addComment(e, item.id)}>
+                                        <input type="text"
+                                            name="comment"
+                                            className="comment-input"
+                                            placeholder="Add a comment" />
+                                        <button className="comment-button" type="submit">ADD</button>
+                                    </form>
+                                    <li>{item.comments.map(comment => <p key={comment.id}>{comment.commentText}</p>)}</li>
+                                </ul>
+
+                            </div>
+                        )
+                    )
+
                     )}
                 </div>
 

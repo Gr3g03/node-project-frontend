@@ -113,7 +113,7 @@ function App() {
         <Route path='/jobs' element={<Jobs user={user} />} />
         <Route path='/jobs/:id' element={<Job />} />
         <Route path='connections' element={<Connections setAllUsers={setAllUsers} searcheditems={searcheditems} />} />
-        <Route path='/connections/:id' element={<Connection />} />
+        <Route path='/connections/:id' element={<Connection allUsers={allUsers} user={user} />} />
         <Route path='/companies' element={<Companies />} />
         <Route path='/profile' element={<Profile user={user} />} />
         <Route path="*" element={<NotFound />} />
