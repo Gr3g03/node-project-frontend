@@ -13,8 +13,14 @@ import Profile from './pages/Profile/Profile';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [allUsers, setAllUsers] = useState([])
+  const [search, setSearch] = useState('')
 
   const navigate = useNavigate()
+
+  const searcheditems = allUsers.filter(user =>
+    user.firstName.toUpperCase().includes(search.toUpperCase())
+  )
 
   useEffect(() => {
     if (localStorage.token) {
@@ -164,7 +170,7 @@ function App() {
     )
   return (
     <div>
-      <Header setUser={setUser} />
+      <Header setUser={setUser} search={search} setSearch={setSearch} />
 
       <Routes>
         <Route index element={<Navigate replace to={'/home'} />} />
@@ -172,7 +178,7 @@ function App() {
         <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path='/jobs' element={<Jobs user={user} />} />
         <Route path='/jobs/:id' element={<Job />} />
-        <Route path='connections' element={<Connections user={user} />} />
+        <Route path='connections' element={<Connections allUsers={allUsers} setAllUsers={setAllUsers} searcheditems={searcheditems} />} />
         <Route path='/connections/:id' element={<Connection />} />
         <Route path='/companies' element={<Companies />} />
         <Route path='/profile' element={<Profile user={user} />} />

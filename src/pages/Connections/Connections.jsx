@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './connections.css'
 
-export default function Connections({ user }) {
+export default function Connections({ allUsers, setAllUsers, searcheditems }) {
 
-    const [allUsers, setAllUsers] = useState([])
+    const [search, setSearch] = useState('')
 
 
     useEffect(() => {
@@ -19,8 +19,8 @@ export default function Connections({ user }) {
     return (
         <div className="container">
             <div className="main-body">
-                {allUsers.map(getUser =>
-                    <Link to={`/connections/${user.id}`}
+                {searcheditems.map(getUser =>
+                    <Link to={`/connections/${allUsers.id}`}
                         key={getUser.id}
                         className='users_list_item'
                     >

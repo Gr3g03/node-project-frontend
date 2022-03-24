@@ -1,16 +1,16 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react/cjs/react.production.min";
 
-export default function Header({ setUser }) {
+export default function Header({ setUser, search, setSearch }) {
 
     const navigate = useNavigate()
 
-    // const [search, setSearch] = useState('')
 
     function signOut() {
         localStorage.removeItem('token')
         setUser(null)
     }
+
 
 
     return (
@@ -25,7 +25,11 @@ export default function Header({ setUser }) {
                     </li>
                     <li className="header__search">
                         <img src='./src/pages/assets/search.svg' alt='' />
-                        <input placeholder="Search" type="text" />
+                        <input placeholder="Search" type="text" name="search"
+                            onChange={e => {
+                                setSearch(e.target.value)
+                            }}
+                        />
                     </li>
                 </ul>
 
