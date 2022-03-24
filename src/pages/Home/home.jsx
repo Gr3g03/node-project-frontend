@@ -73,7 +73,7 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ likes: user.post.id.likes + 1 })
+            body: JSON.stringify({ likes: item.likes + 1 })
         })
             .then(resp => resp.json())
             // update state
@@ -109,7 +109,7 @@ export default function Home({ user, setUser }) {
                         <li><img src={'./src/pages/assets/event.svg'} /></li>
                         <li><img src={'./src/pages/assets/calendarViewWeek.svg'} /></li>
                     </ul>
-                    {user.post.map(item =>
+                    {user.post?.map(item =>
                         <div className="post" key={item.id}>
                             <div className="post__header">
                                 <img className="user_avatar" src={user.photo} alt='avatar' />
@@ -137,7 +137,7 @@ export default function Home({ user, setUser }) {
                                         placeholder="Add a comment" />
                                     <button className="comment-button" type="submit">ADD</button>
                                 </form>
-
+                                <li>{item.comments.map(comment => <p>{comment.commentText}</p>)}</li>
                             </ul>
 
                         </div>
