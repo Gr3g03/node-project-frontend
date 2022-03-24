@@ -39,12 +39,12 @@ export default function Home({ user, setUser }) {
             .then(data => setPosts(data))
     }, [])
 
-    function addComment(e,) {
+    function addComment(e, id) {
         e.preventDefault()
         const commentText = e.target.comment.value
         const dateCreated = Date()
-        const postId = user.post.id
-        const likes = user.id.likes
+        const postId = id
+
 
         fetch('http://localhost:4000/comments', {
             method: 'POST',
@@ -52,7 +52,7 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: likes })
+            body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: 0 })
         })
             .then(resp => resp.json())
             .then(data => {
@@ -128,7 +128,7 @@ export default function Home({ user, setUser }) {
                             </ul>
                             <ul className="comments">
                                 <li >comment </li>
-                                <form className="comment-form" onSubmit={addComment}>
+                                <form className="comment-form" onSubmit={(e) => addComment(e, item.id)}>
                                     <input type="text"
                                         name="comment"
                                         className="comment-input"
