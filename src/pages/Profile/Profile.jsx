@@ -21,41 +21,18 @@ export default function Profile({ user }) {
             </div>
 
             <div className="sidebar__bottom">
-                <p>Recent</p>
+                <p>Resources</p>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
-                    <p>reactjs</p>
+                    <p>Creator mode</p>
                 </div>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
-                    <p>programming</p>
+                    <p>My Netowrk</p>
                 </div>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
-                    <p>softwareengineering</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>design</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>developer</p>
-                </div>
-            </div>
-            <div className="sidebar__bottom">
-                <p>Recent</p>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>reactjs</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>programming</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>softwareengineering</p>
+                    <p>Activity</p>
                 </div>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
@@ -63,11 +40,11 @@ export default function Profile({ user }) {
                 </div>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
-                    <p>developer</p>
+                    <p>My items</p>
                 </div>
             </div>
             <div className="sidebar__bottom">
-                <p>Recent</p>
+                <p>Experiences</p>
                 <div className="sidebar__recentItem">
                     <span className="sidebar__hash">#</span>
                     <p>reactjs</p>
