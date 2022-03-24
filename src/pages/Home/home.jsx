@@ -15,18 +15,17 @@ export default function Home({ user, setUser }) {
                 Authorization: localStorage.token,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: likes, })
+            body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: 0 })
         })
             .then(resp => resp.json())
 
             .then((postData) => {
                 const upadtepost = JSON.parse(JSON.stringify(user))
-
-                const postIndex = upadtepost.post.findIndex(item =>
-                    item.id === postData.id)
-                upadtepost.post[postIndex] = postData
+                postData.comments = []
+                upadtepost.post.push(postData)
                 setUser(upadtepost)
             })
+        e.target.reset()
     }
 
 
