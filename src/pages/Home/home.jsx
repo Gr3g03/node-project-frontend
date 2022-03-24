@@ -65,12 +65,12 @@ export default function Home({ user, setUser }) {
             .then(resp => resp.json())
             // update state
             .then((postData) => {
-                let upadteLikes = JSON.parse(JSON.stringify(user))
+                const upadteLikes = JSON.parse(JSON.stringify(user))
 
-                let postIndex = upadteLikes.post.findIndex(item =>
+                const postIndex = upadteLikes.post.findIndex(item =>
                     item.id === postData.id)
                 // postData === postIndex
-                postIndex = postData
+                upadteLikes.post[postIndex] = postData
                 setUser(upadteLikes)
             })
     }
