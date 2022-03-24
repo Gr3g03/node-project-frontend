@@ -5,42 +5,42 @@ export default function Job() {
 
 
     const params = useParams()
-    const [companies, setCompanies] = useState({})
+    const [company, setCompany] = useState(null)
 
     useEffect(() => {
         fetch(`http://localhost:4000/companies/${params.id}`)
             .then(resp => resp.json())
-            .then(newData => setCompanies(newData))
+            .then(newData => setCompany(newData))
     }, [])
 
 
     // console.log(companies)
-
+    if (company === null) return <h1>Loading</h1>
     return (
         <main>
             <h2>sometext</h2>
             <section className="product-detail">
                 <img
-                    // @ts-ignore
-                    src={companies.photo}
-                    // @ts-ignore
-                    alt={companies.name}
+
+                    src={company.photo}
+
+                    alt={company.name}
                 />
-                {/* {companies.map(company => */}
+
                 <div className="product-detail__side"  >
                     <h3>{
-                        // @ts-ignore
+
                         company.name}</h3>
                     <h2 >{
-                        // @ts-ignore
+
                         company.location} </h2>
                     <p> {
-                        // @ts-ignore
+
                         company.description}</p>
                     <p> item </p>
                     <h2>reviews</h2>
                 </div>
-                {/* )} */}
+
             </section>
         </main>
     );
