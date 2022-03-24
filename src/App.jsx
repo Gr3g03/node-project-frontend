@@ -16,8 +16,16 @@ function App() {
   const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState([])
   const [search, setSearch] = useState('')
+  function filterUsers() {
+    let filteredUsers = allUsers
 
-  const searcheditems = allUsers.filter(user =>
+    filteredUsers = filteredUsers.filter(filterUser => {
+      return filterUser.id !== user.id
+    })
+    return filteredUsers
+  }
+
+  const searcheditems = filterUsers().filter(user =>
     user.firstName.toUpperCase().includes(search.toUpperCase())
   )
 
