@@ -39,7 +39,7 @@ export default function Header({ setUser, search, setSearch }) {
                     {/* <Link to={'/companies'}> <li className='headerOption__icon' > <img src='./src/pages/assets/notifications.svg' alt="notifications" /> </li></Link> */}
                     <Link to={'/connections'}> <li className='headerOption__icon' > <img src='./src/pages/assets/supervisorAccount.svg' alt="supervisorAccount" /></li></Link>
                     <Link to={'/profile'}> <li className='headerOption__icon'> <img src='./src/pages/assets/avatar.svg' alt="chat" /> </li></Link>
-                    <li><button onClick={signOut}>SIGN OUT</button></li>
+                    <li><button className="sign_out" onClick={signOut}>SIGN OUT</button></li>
                 </ul>
             </nav>
         </header>

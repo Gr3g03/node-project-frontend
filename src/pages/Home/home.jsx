@@ -64,6 +64,8 @@ export default function Home({ user, setUser }) {
             })
     }
 
+    // console.log(user.post[1].id)
+
     function like(item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
             method: 'PATCH',
@@ -79,7 +81,7 @@ export default function Home({ user, setUser }) {
 
     }
 
-    console.log(user)
+    // console.log(user)
 
     return (
         <main className='main__section'>

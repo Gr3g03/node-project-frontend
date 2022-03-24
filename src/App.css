@@ -74,6 +74,12 @@
   width: 25px;
 }
 
+.sign_out{
+  border: none;
+  color: #0074b1;
+  font-size: 16px;
+}
+
 /* feed */
 
 .main__section{
@@ -172,12 +178,6 @@
 
 
 
-/* sidebar */
-
-
-/* widgets */
-
-
 /* Login */
 
 
@@ -262,7 +262,7 @@
 }
 
 .suggested {
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-radius: 5px;
  display: grid;
  align-items: center;
@@ -283,7 +283,7 @@
   display: grid;
   grid-template-rows: 1fr 1fr;
   height:fit-content;
-  border: 1px solid black;
+  border: 1px solid lightgray;
   border-radius: 5px;
   padding: 0.2rem
 }
