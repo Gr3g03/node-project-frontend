@@ -13,6 +13,36 @@ export default function Connection({ }) {
             .then(newData => setUser(newData))
     }, [])
 
+    function connect(user) {
+        fetch(`http://localhost:4000/connect`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ connectionId: user.id })
+        })
+            .then(resp => resp.json())
+            // update state
+            .then(updatedUser => setUser(updatedUser))
+
+    }
+
+    function disconnect(user) {
+        fetch(`http://localhost:4000/removeconnection`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ connectionId: user.id })
+        })
+            .then(resp => resp.json())
+            // update state
+            .then(updatedUser => setUser(updatedUser))
+
+    }
+
     console.log(user)
     if (user === null) return <h1>Loading</h1>
     return (
@@ -39,6 +69,8 @@ export default function Connection({ }) {
                     <p>Views on post</p>
                     <p className="sidebar__statNumber">2,650</p>
                 </div>
+                <button onClick={() => connect(user)}>Connect</button>
+                <button onClick={() => disconnect(user)}>Disconnect</button>
             </div>
 
             <div className="sidebar__bottom">
