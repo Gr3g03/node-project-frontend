@@ -18,14 +18,17 @@ export default function Home({ user, setUser }) {
             body: JSON.stringify({ text: text, dateCreated: dateCreated, likes: likes, })
         })
             .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setUser(data.user)
-                }
+
+            .then((postData) => {
+                const upadtepost = JSON.parse(JSON.stringify(user))
+
+                const postIndex = upadtepost.post.findIndex(item =>
+                    item.id === postData.id)
+                upadtepost.post[postIndex] = postData
+                setUser(upadtepost)
             })
     }
+
 
     function addComment(e, id) {
         e.preventDefault()
@@ -43,12 +46,14 @@ export default function Home({ user, setUser }) {
             body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: 0 })
         })
             .then(resp => resp.json())
-            .then(data => {
-                if (data.error) {
-                    alert(data.error)
-                } else {
-                    setUser(data.user)
-                }
+
+            .then((commentData) => {
+                const upadtecomment = JSON.parse(JSON.stringify(user))
+
+                const postIndex = upadtecomment.post.findIndex(item =>
+                    item.id === commentData.id)
+                upadtecomment.post[postIndex] = commentData
+                setUser(upadtecomment)
             })
     }
     console.log(user)
