@@ -12,7 +12,7 @@ export default function Profile({ user }) {
             <div className="sidebar__stats">
                 <div className="sidebar__stat">
                     <p>Connections</p>
-                    <p className="sidebar__statNumber">{user.following.length}</p>
+                    {/* <p className="sidebar__statNumber">{user.following.length}</p> */}
                 </div>
                 <div className="sidebar__stat">
                     <p>Views on post</p>

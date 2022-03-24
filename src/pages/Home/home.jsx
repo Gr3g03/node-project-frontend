@@ -51,6 +51,7 @@ export default function Home({ user, setUser }) {
                 }
             })
     }
+    console.log(user)
 
     function like(item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
@@ -63,7 +64,14 @@ export default function Home({ user, setUser }) {
         })
             .then(resp => resp.json())
             // update state
-            .then(updatedUser => setUser(updatedUser))
+            .then((postData) => {
+                const upadteLikes = JSON.parse(JSON.stringify(user.post))
+
+                const postIndex = upadteLikes.findIndex(item =>
+                    item.id === postData.id)
+                // postData === postIndex
+                setUser(postIndex)
+            })
 
     }
 
