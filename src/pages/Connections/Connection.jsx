@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-export default function Connection() {
+export default function Connection({ }) {
 
     const [user, setUser] = useState([])
 
@@ -19,9 +19,15 @@ export default function Connection() {
         <div className="sidebar">
             <div className="sidebar__top">
                 <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxMjA3fDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080" alt="" />
-                <i className="material-icons sidebar__topAvatar"><img className='user_avatar' src={user.photo} alt="" /> </i>
-                <h2>{user.firstName}</h2>
-                <h4>{user.email}</h4>
+                <i className="material-icons sidebar__topAvatar"><img className='user_avatar' src={user.
+                    // @ts-ignore
+                    photo} alt="" /> </i>
+                <h2>{user.
+                    // @ts-ignore
+                    firstName}</h2>
+                <h4>{user.
+                    // @ts-ignore
+                    email}</h4>
             </div>
 
             <div className="sidebar__stats">
