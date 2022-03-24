@@ -2,19 +2,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './connections.css'
 
-export default function Connections({ allUsers, setAllUsers, searcheditems }) {
-
-    const [search, setSearch] = useState('')
-
-
+export default function Connections({ setAllUsers, searcheditems }) {
     useEffect(() => {
         fetch('http://localhost:4000/users')
             .then(resp => resp.json())
             .then(newData => setAllUsers(newData))
     }, [])
-
-
-    // console.log(allUsers)
 
     return (
         <div className="container">

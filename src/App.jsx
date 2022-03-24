@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css'
 import NotFound from './NotFound';
 import Companies from './pages/Companies/Companies';
@@ -16,8 +16,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [allUsers, setAllUsers] = useState([])
   const [search, setSearch] = useState('')
-
-  const navigate = useNavigate()
 
   const searcheditems = allUsers.filter(user =>
     user.firstName.toUpperCase().includes(search.toUpperCase())
@@ -69,7 +67,6 @@ function App() {
       })
   }
 
-
   function login(e) {
     e.preventDefault()
     const email = e.target.email.value
@@ -101,14 +98,13 @@ function App() {
   return (
     <div>
       <Header setUser={setUser} search={search} setSearch={setSearch} />
-
       <Routes>
         <Route index element={<Navigate replace to={'/home'} />} />
         {/* <Route path='/login' element={<Login />} /> */}
         <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path='/jobs' element={<Jobs user={user} />} />
         <Route path='/jobs/:id' element={<Job />} />
-        <Route path='connections' element={<Connections allUsers={allUsers} setAllUsers={setAllUsers} searcheditems={searcheditems} />} />
+        <Route path='connections' element={<Connections setAllUsers={setAllUsers} searcheditems={searcheditems} />} />
         <Route path='/connections/:id' element={<Connection />} />
         <Route path='/companies' element={<Companies />} />
         <Route path='/profile' element={<Profile user={user} />} />
