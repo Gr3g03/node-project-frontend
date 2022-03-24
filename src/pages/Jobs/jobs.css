@@ -7,6 +7,7 @@
     grid-template-columns: 3fr 6fr;
     padding: 2rem;
     height: 100%;
+  
   }
   
   .product-detail > img {
@@ -20,10 +21,12 @@
     align-content: start;
     padding-left: 1rem;
     border-left: 2px solid;
+    
   }
   
   .product-detail__side h3 {
     align-self: start;
+    
   }
   
   .product-detail__side h2 {
@@ -36,4 +39,9 @@
     margin-top: 1rem;
     overflow-y: hidden;
     text-overflow: ellipsis;
+  }
+
+  .jobs_list_item{
+    text-decoration: none;
+    color: black;
   }

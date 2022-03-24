@@ -5,7 +5,7 @@ export default function Job() {
 
 
     const params = useParams()
-    const [companies, setCompanies] = useState([])
+    const [companies, setCompanies] = useState({})
 
     useEffect(() => {
         fetch(`http://localhost:4000/companies/${params.id}`)
@@ -14,7 +14,7 @@ export default function Job() {
     }, [])
 
 
-    console.log(companies)
+    // console.log(companies)
 
     return (
         <main>
@@ -26,15 +26,21 @@ export default function Job() {
                     // @ts-ignore
                     alt={companies.name}
                 />
-                {companies.map(company =>
-                    <div className="product-detail__side"  >
-                        <h3>{company.name}</h3>
-                        <h2 >{company.location} </h2>
-                        <p> {company.description}</p>
-                        <p> item </p>
-                        <h2>reviews</h2>
-                    </div>
-                )}
+                {/* {companies.map(company => */}
+                <div className="product-detail__side"  >
+                    <h3>{
+                        // @ts-ignore
+                        company.name}</h3>
+                    <h2 >{
+                        // @ts-ignore
+                        company.location} </h2>
+                    <p> {
+                        // @ts-ignore
+                        company.description}</p>
+                    <p> item </p>
+                    <h2>reviews</h2>
+                </div>
+                {/* )} */}
             </section>
         </main>
     );

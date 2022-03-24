@@ -5,12 +5,11 @@ body{
 }
 .main-body {
   display: grid;
-  grid-template-columns:repeat(4 , 0.6fr);
-  grid-row-gap: 2rem;
-  height: 100%;
-  padding: 2rem;
-  place-items: center;
-overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 0.5fr));
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  margin-top: 0.5rem;
 }
 
 .card{
@@ -19,7 +18,12 @@ overflow: hidden;
     place-items: center;
     text-align: center;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-    border: 1px solid black;
+    border: 1px solid lightgray;
     background-color: white;
     width: 18rem;
+}
+
+.users_list_item{
+  text-decoration: none;
+  color: black;
 }

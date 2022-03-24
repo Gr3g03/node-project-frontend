@@ -13,7 +13,7 @@ export default function Jobs({ user }) {
             .then(resp => resp.json())
             .then(newData => setCompanies(newData))
     }, [])
-    console.log(companies[0])
+    // console.log(companies)
 
 
     return (
