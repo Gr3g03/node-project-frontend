@@ -123,6 +123,7 @@
   .like_button{
     border: none;
     display: inline;
+    background-color: white;
   }
  
   .comment-form{

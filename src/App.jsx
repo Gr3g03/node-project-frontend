@@ -9,6 +9,7 @@ import Header from './pages/Header/Header';
 import Home from './pages/Home/home';
 import Job from './pages/Jobs/job';
 import Jobs from './pages/Jobs/Jobs';
+import Login from './pages/Login';
 import Profile from './pages/Profile/Profile';
 
 function App() {
@@ -95,78 +96,7 @@ function App() {
   if (user === null)
     return (
 
-      <div className="App">
-        <main className="login__main">
-          <div className="login">
-            <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6gTMRC4TofFTro6BXyqaT5zNWhHTOqJJPEQ&usqp=CAU"
-              alt=""
-            />
-            <form onSubmit={signUp}>
-              <input
-                placeholder="Full name (required if registering)"
-                name='firstName'
-                type="text"
-              />
-              <input
-                placeholder="Full name (required if registering)"
-                name='lastName'
-                type="text"
-              />
-              <input
-                placeholder="Profile pic URL (optional)"
-                name='photo'
-                type="text"
-              />
-              <input
-                placeholder="Email"
-                name='email'
-                type="email"
-              />
-              <input
-                placeholder="Password"
-                name='password'
-                type="password"
-              />
-              <button type="submit" onSubmit={(e) => {
-                e.preventDefault()
-                navigate('/home')
-              }}>
-                Sign In
-              </button>
-            </form>
-
-            <form onSubmit={login}>
-              <input
-                placeholder="Email"
-                name='email'
-                type="email"
-              />
-              <input
-                placeholder="Password"
-                name='password'
-                type="password"
-              />
-              <button type="submit" onSubmit={(e) => {
-                e.preventDefault()
-                navigate('/home')
-              }}>
-                Sign In
-              </button>
-            </form>
-            <p>
-              Not a member?{` `}
-              <span className="login__register">
-                Register Now
-              </span>
-            </p>
-          </div>
-          <div className="right_logi__section">
-            <img src={'src/pages/assets/background_linkedin.svg'} alt="" />
-          </div>
-        </main>
-
-      </div>
+      <Login login={login} signUp={signUp} />
     )
   return (
     <div>
@@ -174,7 +104,7 @@ function App() {
 
       <Routes>
         <Route index element={<Navigate replace to={'/home'} />} />
-        {/* <Route path='/login' element={<Login setUser={setUser} user={user} />} /> */}
+        {/* <Route path='/login' element={<Login />} /> */}
         <Route path='/home' element={<Home user={user} setUser={setUser} />} />
         <Route path='/jobs' element={<Jobs user={user} />} />
         <Route path='/jobs/:id' element={<Job />} />
