@@ -75,8 +75,8 @@ export default function Connection({ allUsers, user }) {
                 </div>
                 {
                     foundConnection.id === useri.id ?
-                        <button onClick={() => disconnect(useri)}>Disconnect</button>
-                        : <button onClick={() => connect(useri)}>Connect</button>}
+                        <button className="disconnect_btn" onClick={() => disconnect(useri)}>Disconnect</button>
+                        : <button className="connect_btn" onClick={() => connect(useri)}>Connect</button>}
 
 
             </div>

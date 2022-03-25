@@ -4,6 +4,7 @@ import Education from "./Education"
 export default function Profile({ user, setUser }) {
     const [show, setShow] = useState(false)
 
+
     function handleOnClick() {
         setShow(true)
     }
@@ -27,15 +28,14 @@ export default function Profile({ user, setUser }) {
                 </div>
             </div>
 
-
             <div className="sidebar__bottom">
                 <p>Education</p>
-                <ul>
-                    <li>
-                        <button onClick={() =>
+                <ul className="Education_container">
+                    <li className="Education_list">
+                        <button className="Education_Button" onClick={() =>
                             handleOnClick()
                         }>
-                            <h3 >+</h3></button>
+                            <h3 >Add Education</h3></button>
                         <Education show={show} setShow={setShow} user={user} setUser={setUser} />
                     </li>
                     {

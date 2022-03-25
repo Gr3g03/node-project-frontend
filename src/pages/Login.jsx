@@ -1,7 +1,18 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Register from './Register';
 
 
 export default function Login({ signUp, login }) {
+
+    const [show, setShow] = useState(false)
+
+
+    function handleOnClick() {
+        setShow(true)
+    }
+
+
     const navigate = useNavigate()
     return (
         <div className="App">
@@ -11,39 +22,6 @@ export default function Login({ signUp, login }) {
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6gTMRC4TofFTro6BXyqaT5zNWhHTOqJJPEQ&usqp=CAU"
                         alt=""
                     />
-                    <form onSubmit={signUp}>
-                        <input
-                            placeholder="Full name (required if registering)"
-                            name='firstName'
-                            type="text"
-                        />
-                        <input
-                            placeholder="Full name (required if registering)"
-                            name='lastName'
-                            type="text"
-                        />
-                        <input
-                            placeholder="Profile pic URL (optional)"
-                            name='photo'
-                            type="text"
-                        />
-                        <input
-                            placeholder="Email"
-                            name='email'
-                            type="email"
-                        />
-                        <input
-                            placeholder="Password"
-                            name='password'
-                            type="password"
-                        />
-                        <button type="submit" onSubmit={(e) => {
-                            e.preventDefault()
-                            navigate('/home')
-                        }}>
-                            Sign In
-                        </button>
-                    </form>
 
                     <form onSubmit={login}>
                         <input
@@ -63,11 +41,13 @@ export default function Login({ signUp, login }) {
                             Login
                         </button>
                     </form>
-                    <p>
+                    <p className='Education_list'>
                         Not a member?{` `}
-                        <span className="login__register">
-                            Register Now
-                        </span>
+                        <button className="register_Button" onClick={() =>
+                            handleOnClick()
+                        }>
+                            <span >Register now</span></button>
+                        <Register show={show} setShow={setShow} signUp={signUp} />
                     </p>
                 </div>
                 <div className="right_logi__section">

@@ -80,10 +80,6 @@ export default function Home({ user, setUser }) {
             })
     }
 
-
-    console.log(user)
-
-
     function like(item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
             method: 'PATCH',
@@ -103,8 +99,6 @@ export default function Home({ user, setUser }) {
                 setUser(upadteLikes)
             })
     }
-
-
 
     function increaselike(follower, item) {
         fetch(`http://localhost:4000/likes/${item.id}`, {
@@ -132,7 +126,6 @@ export default function Home({ user, setUser }) {
 
             })
     }
-    console.log(user)
 
     return (
         <main className='main__section'>
