@@ -47,7 +47,7 @@ export default function Connection({ allUsers, user }) {
         users.following.find(follower => follower.id === user.id))
 
 
-    console.log(allUsers)
+    console.log(useri)
     if (useri === null) return <h1>Loading</h1>
     return (
         <div className="sidebar">
@@ -74,59 +74,26 @@ export default function Connection({ allUsers, user }) {
                     <p className="sidebar__statNumber">2,650</p>
                 </div>
                 {
-                    foundConnection.id === useri.id ?
-                        <button className="disconnect_btn" onClick={() => disconnect(useri)}>Disconnect</button>
-                        : <button className="connect_btn" onClick={() => connect(useri)}>Connect</button>}
+                    foundConnection?.id === useri.id ?
+                        <button className="connect_btn" onClick={() => connect(useri)}>Connect</button>
+                        : <button className="disconnect_btn" onClick={() => disconnect(useri)}>Disconnect</button>}
 
 
             </div>
+            < div className="sidebar__bottom">
+                <p>Education</p>
+                <ul className="Education_container">
 
-            <div className="sidebar__bottom">
-                <p>Resources</p>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>Creator mode</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>My Netowrk</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>Activity</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>design</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>My items</p>
-                </div>
+                    {
+                        useri.Education?.map(school =>
+                            <li><div><h3>{school.school}</h3>
+                                <h4>{school.field}</h4>
+                                <span>{school.startYear}</span><span>-{school.endYear}</span></div></li>
+                        )
+                    }
+                </ul>
             </div>
-            <div className="sidebar__bottom">
-                <p>Experiences</p>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>reactjs</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>programming</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>softwareengineering</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>design</p>
-                </div>
-                <div className="sidebar__recentItem">
-                    <span className="sidebar__hash">#</span>
-                    <p>developer</p>
-                </div>
-            </div>
+
         </div>
     )
 }

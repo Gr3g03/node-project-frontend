@@ -22,18 +22,7 @@ export default function Jobs({ user }) {
             <Sidebar user={user} />
 
             <div className="sugested__jobs__searches">
-                <section className="suggested-searches">
-                    <div className="suggested">
-                        <h2>Suggested searches</h2>
-                        <ul className="suggested__">
-                            <li className="suggested-box" >searches  </li>
-                            <li className="suggested-box">searches  </li>
-                            <li className="suggested-box">searches  </li>
-                            <li className="suggested-box">searches  </li>
-                        </ul>
-                    </div>
 
-                </section>
                 {companies.map(job =>
                     <Link to={`/jobs/${job.id}`}
                         key={job.id}

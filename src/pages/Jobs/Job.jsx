@@ -18,7 +18,6 @@ export default function Job() {
     if (company === null) return <h1>Loading</h1>
     return (
         <main>
-            <h2>sometext</h2>
             <section className="product-detail">
                 <img
 
@@ -37,8 +36,7 @@ export default function Job() {
                     <p> {
 
                         company.description}</p>
-                    <p> item </p>
-                    <h2>reviews</h2>
+
                 </div>
 
             </section>

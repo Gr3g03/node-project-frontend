@@ -6,7 +6,7 @@ export default function Home({ user, setUser }) {
     function addNewPost(e) {
         e.preventDefault()
         const text = e.target.newPost.value
-        const dateCreated = Date()
+        const dateCreated = Date
         const likes = user.likes
 
         fetch('http://localhost:4000/post', {
@@ -177,6 +177,7 @@ export default function Home({ user, setUser }) {
                                         placeholder="Add a comment" />
                                     <button className="comment-button" type="submit">ADD</button>
                                 </form>
+                                <h5>Comments</h5>
                                 <li>{item.comments.map(comment => <p key={comment.id}>{comment.commentText}</p>)}</li>
                             </ul>
 
@@ -208,6 +209,7 @@ export default function Home({ user, setUser }) {
                                             placeholder="Add a comment" />
                                         <button className="comment-button" type="submit">ADD</button>
                                     </form>
+                                    <h5>Comments</h5>
                                     <li>{item.comments.map(comment => <p key={comment.id}>{comment.commentText}</p>)}</li>
                                 </ul>
 
