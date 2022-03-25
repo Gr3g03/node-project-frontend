@@ -47,9 +47,40 @@ export default function Home({ user, setUser }) {
             .then(resp => resp.json())
             .then((postData) => {
                 const upadteLikes = JSON.parse(JSON.stringify(user))
+                const postIndex = upadteLikes.post.findIndex(item =>
+                    item.id === postId)
+                upadteLikes.post[postIndex].comments.push(postData)
                 setUser(upadteLikes)
             })
     }
+
+    function comment(e, follower, item) {
+        e.preventDefault()
+        const commentText = e.target.comment.value
+        const dateCreated = Date()
+        const postId = item.id
+
+        fetch('http://localhost:4000/comments', {
+            method: 'POST',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ commentText: commentText, dateCreated: dateCreated, postId: postId, likes: 0 })
+        })
+            .then(resp => resp.json())
+            .then((postData) => {
+                const upadteLikes = JSON.parse(JSON.stringify(user))
+                const followingIndex = upadteLikes.following.findIndex(item =>
+                    item.id === follower.id)
+                const postIndex = upadteLikes.following[followingIndex].post.findIndex(item =>
+                    item.id === postId)
+                upadteLikes.following[followingIndex].post[postIndex].comments.push(postData)
+                setUser(upadteLikes)
+            })
+    }
+
+
     console.log(user)
 
 
@@ -70,6 +101,35 @@ export default function Home({ user, setUser }) {
                     item.id === postData.id)
                 upadteLikes.post[postIndex] = postData
                 setUser(upadteLikes)
+            })
+    }
+
+
+
+    function increaselike(follower, item) {
+        fetch(`http://localhost:4000/likes/${item.id}`, {
+            method: 'PATCH',
+            headers: {
+                Authorization: localStorage.token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ likes: item.likes + 1 })
+        })
+            .then(resp => resp.json())
+            // update state
+            .then((postData) => {
+                const upadteLikes = JSON.parse(JSON.stringify(user))
+                const followingIndex = upadteLikes.following.findIndex(item =>
+                    item.id === follower.id)
+
+                const first = upadteLikes.following[followingIndex].post.findIndex(itemi =>
+                    itemi.id === postData.id)
+                upadteLikes.following[followingIndex].post[first] = postData
+
+
+                setUser(upadteLikes)
+
+
             })
     }
     console.log(user)
@@ -141,14 +201,14 @@ export default function Home({ user, setUser }) {
                                     </div>
                                 </div>
                                 <ul className="post__buttons">
-                                    <li><button className="like_button" onClick={() => { like(item) }}>
+                                    <li><button className="like_button" onClick={() => { increaselike(follower, item) }}>
                                         <img src={'./src/pages/assets/thumbUp.svg'} /> {item.likes}   </button></li>
                                     <li><img src={'./src/pages/assets/comment.svg'} /></li>
                                     <li><img src={'./src/pages/assets/share.svg'} /></li>
                                     <li><img src={'./src/pages/assets/send.svg'} /></li>
                                 </ul>
                                 <ul className="comments">
-                                    <form className="comment-form" onSubmit={(e) => addComment(e, item.id)}>
+                                    <form className="comment-form" onSubmit={(e) => comment(e, follower, item)}>
                                         <input type="text"
                                             name="comment"
                                             className="comment-input"
